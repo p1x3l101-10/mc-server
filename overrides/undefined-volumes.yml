@@ -1,0 +1,7 @@
+volumes:
+  data:
+  extras:
+  mods:
+  plugins:
+  config: 
+  global:

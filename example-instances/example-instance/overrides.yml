@@ -1,0 +1,17 @@
+services:
+  mc:
+    image: itzg/minecraft-server:java8
+    environment:
+      MOTD: "Pixel's MC Server\\nCurrent Modpack: CF - Epoch Runner"
+      CF_API_KEY: ${CF_API_KEY}
+      TYPE: AUTO_CURSEFORGE
+      CF_SLUG: 'epoch-runner-formerly-nuclear-beyond-modpack'
+      REMOVE_OLD_MODS: 'TRUE'
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './instances/epoch-runner/data'

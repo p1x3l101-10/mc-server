@@ -1,0 +1,47 @@
+version: "3.8"
+
+name: "mc-server"
+
+services:
+  mc:
+    image: itzg/minecraft-server:java17-alpine # For different java versions than default see https://itzg.github.io/docker-minecraft-docs/java/versions/java
+    environment: # Check the docks first https://itzg.github.io/docker-minecraft-docs/java/configuration
+      EULA: "true"
+      WHITELIST_FILE: /global/whitelist.json
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      MAX_PLAYERS: 10
+      ALLOW_NETHER: true
+      DIFFICULTY: normal
+      MODE: survival
+      PVP: true
+      ONLINE_MODE: false
+      ALLOW_FLIGHT: true
+      SERVER_NAME: "Pixel's Server"
+      GUI: false
+      MEMORY: 4G
+    ports:
+      - "25565:25565"
+      - "24464:24464"
+    volumes:
+      - data:/data
+      - extras:/extras
+      - mods:/mods
+      - plugins:/plugins
+      - config:/config
+      - global:/global
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    healthcheck:
+      test: mc-health
+      start_period: 1m
+      interval: 5s
+      retries: 20
+
+volumes:
+  global:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/srv/mc/config'

@@ -1,0 +1,6 @@
+services:
+  mc:
+    restart: no
+  web:
+    profiles:
+      - disabled
