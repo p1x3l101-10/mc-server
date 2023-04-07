@@ -2,5 +2,6 @@ services:
   mc:
     restart: no
   web:
+    image: scratch
     profiles:
       - disabled
