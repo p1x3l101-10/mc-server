@@ -4,7 +4,6 @@ instance="$1"
 shift
 
 OVERRIDES=(
-  'undefined-volumes.yml'
   'force-redownload.yml'
   'alt-uid_gid.yml'
   'debug.yml'
@@ -19,6 +18,7 @@ for file in ${OVERRIDES[@]}; do
 done
 
 ARGS=( 
+  '--file overrides/undefined-volumes.yml'
   '--file compose.yml' 
   ${FILE_ARGS[@]} 
   '--file server-overrides.yml' 
