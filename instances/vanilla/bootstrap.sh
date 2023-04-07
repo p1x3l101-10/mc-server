@@ -17,5 +17,5 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: './instances/vanilla/data'
+      device: '$PREFIX/data'
 EOF

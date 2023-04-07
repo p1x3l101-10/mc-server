@@ -23,6 +23,5 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/srv/mc/instances/epoch-runner/data'
-      devide: '$PREFIX/data'
+      device: '$PREFIX/data'
 EOF
