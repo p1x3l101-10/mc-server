@@ -1,7 +1,14 @@
+#!/bin/bash
+
+PREFIX="$(cd -- "$(dirname "$0")"; pwd -P)"
+
+mkdir data
+
+cat <<EOF > overrides.yml
 services:
   mc:
     environment:
-      MOTD: "Pixel's MC Server\\nCurrent Modpack: None"
+      MOTD: "Pixel's MC Server\\\\nCurrent Modpack: None"
       VERSION: LATEST
 
 volumes:
@@ -11,3 +18,4 @@ volumes:
       type: 'none'
       o: 'bind'
       device: './instances/vanilla/data'
+EOF
