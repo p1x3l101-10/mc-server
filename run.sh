@@ -3,20 +3,26 @@
 instance="$1"
 shift
 
-FILES=(
-  'overrides/undefined-volumes.yml'
-  'compose.yml'
-#  'overrides/rcon-webserver.yml'
-  'overrides/server-overrides.yml'
+OVERRIDES=(
+  'undefined-volumes.yml'
+  'force-redownload.yml'
+  'debug.yml'
 )
 
-for file in ${FILES[@]}; do
-  if [[ -f $file ]]; then
-    FILE_ARGS=( ${FILE_ARGS[@]} '--file' "$file" )
+for file in ${OVERRIDES[@]}; do
+  if [[ -f "overrides/$file" ]]; then
+    FILE_ARGS=( ${FILE_ARGS[@]} '--file' 'overrides/'"$file" )
+  else
+    echo "WARN: overrides/$file dows not exist"
   fi
 done
 
-ARGS=( ${FILE_ARGS[@]} ${ARGS[@]} )
+ARGS=( 
+  '--file compose.yml' 
+  ${FILE_ARGS[@]} 
+  '--file server-overrides.yml' 
+  ${ARGS[@]} 
+)
 
 if [[ $1 != "dry" ]]; then
   if [[ ! -f "./instances/$instance/overrides.yml" ]]; then
@@ -24,7 +30,8 @@ if [[ $1 != "dry" ]]; then
     exit 1
   fi
 
-  ln -sf ../instances/$instance/overrides.yml ./overrides/server-overrides.yml
+  ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
+    exit 1
 
   exec docker-compose \
     --env-file ./.env \
