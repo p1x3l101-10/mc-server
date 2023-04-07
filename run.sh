@@ -6,6 +6,7 @@ shift
 OVERRIDES=(
   'undefined-volumes.yml'
   'force-redownload.yml'
+  'alt-uid_gid.yml'
   'debug.yml'
 )
 
