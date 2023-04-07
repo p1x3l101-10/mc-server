@@ -1,0 +1,4 @@
+services:
+  mc:
+    environment:
+      FORCE_REDOWNLOAD: true
