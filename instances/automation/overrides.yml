@@ -1,6 +1,5 @@
 services:
   mc:
-    image: itzg/minecraft-server:java8-multiarch
     environment:
       MOTD: "Pixel's MC Server\\nCurrent Modpack: Modrinth - Automation"
       TYPE: 'FORGE'
