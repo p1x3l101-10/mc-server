@@ -1,3 +1,4 @@
-/instances/*/*/
+/instances/*/*
 .env
 /server-overrides.yml
+!/instances/*/bootstrap.sh
