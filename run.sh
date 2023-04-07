@@ -27,7 +27,11 @@ ARGS=(
 
 if [[ $1 != "dry" ]]; then
   if [[ ! -f "./instances/$instance/overrides.yml" ]]; then
-    echo "$instance is not a valid instance!"
+    if [[ -f "./instances/$instance/bootstrap.sh" ]]; then
+      echo "$instance exists, but is not built yet..."
+    else
+      echo "$instance is not a valid instance!"
+    fi
     exit 1
   fi
 
