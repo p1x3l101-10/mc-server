@@ -6,7 +6,7 @@ shift
 FILES=(
   'overrides/undefined-volumes.yml'
   'compose.yml'
-  'overrides/rcon-webserver.yml'
+#  'overrides/rcon-webserver.yml'
   'overrides/server-overrides.yml'
 )
 
