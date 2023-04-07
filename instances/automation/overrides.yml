@@ -4,6 +4,7 @@ services:
       MOTD: "Pixel's MC Server\\nCurrent Modpack: Modrinth - Automation"
       TYPE: 'FORGE'
       VERSION: '1.19.2'
+      MODS_FILE: '/extras/mods.txt'
       MODRINTH_PROJECTS: 'sl6XzkCP'
       MODRINTH_DOWNLOAD_OPTIONAL_DEPENDENCIES: 'true'
       MEMORY: '8G'
@@ -15,3 +16,21 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/srv/mc/instances/automation/data'
+  extras:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/srv/mc/instances/automation/extras'
+  mods:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/srv/mc/instances/automation/mods'
+  config: 
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/srv/mc/instances/automation/config'
