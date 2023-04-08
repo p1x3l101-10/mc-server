@@ -6,7 +6,6 @@ shift
 OVERRIDES=(
   'force-redownload.yml'
   'alt-uid_gid.yml'
-  'debug.yml'
 )
 
 for file in ${OVERRIDES[@]}; do
