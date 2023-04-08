@@ -35,6 +35,7 @@ done
 cat <<EOF > overrides.yml
 services:
   mc:
+    image: itzg/minecraft-server:java17
     environment:
       MOTD: "Pixel's MC Server\\\\nCurrent Modpack: None"
       VERSION: 1.19.4
