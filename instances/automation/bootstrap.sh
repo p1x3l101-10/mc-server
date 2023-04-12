@@ -24,7 +24,7 @@ cat <<EOF > overrides.yml
 services:
   mc:
     environment:
-      MOTD: "Pixel's MC Server\\\\nCurrent Modpack: Modrinth - Automation"
+      MOTD: "Pixel's MC Server\\\\nCurrent Modpack: Modrinth - Automation 3.2"
       TYPE: 'FORGE'
       VERSION: '1.19.2'
       MODS_FILE: '/extras/mods.txt'
