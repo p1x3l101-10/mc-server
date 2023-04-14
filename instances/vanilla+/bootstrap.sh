@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PREFIX="$(cd -- "$(dirname "$0")"; pwd -P)"
 MODRINTH_MODS=(

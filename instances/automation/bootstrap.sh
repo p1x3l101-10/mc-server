@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 MODRINTH_PACK_URL="https://cdn.modrinth.com/data/sl6XzkCP/versions/HyvM5ysr/Automation%203.2.mrpack"
 PREFIX="$(cd -- "$(dirname "$0")"; pwd -P)"
