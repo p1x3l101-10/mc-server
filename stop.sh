@@ -2,6 +2,8 @@
 
 source ./run.sh . dry
 
+rm ./server-overrides.yml
+
 exec docker compose \
   --env-file ./.env \
   ${ARGS[@]} \
