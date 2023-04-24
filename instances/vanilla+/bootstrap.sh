@@ -22,7 +22,7 @@ MODRINTH_MODS=(
   'essentialaddons'
 )
 
-mkdir data
+mkdir -p data
 mkdir mods
 
 MODRINTH_MODS_INTERNAL=$(

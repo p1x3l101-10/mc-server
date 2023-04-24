@@ -2,7 +2,7 @@
 
 PREFIX="$(cd -- "$(dirname "$0")"; pwd -P)"
 
-mkdir data
+mkdir -p data
 
 cat <<EOF > overrides.yml
 services:

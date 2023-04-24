@@ -5,6 +5,7 @@ PREFIX="$(cd -- "$(dirname "$0")"; pwd -P)"
 
 mkdir download
 mkdir extras
+mkdir -p data
 
 cd download 
 wget $MODRINTH_PACK_URL
@@ -13,7 +14,7 @@ unzip ./*
 
 mv overrides/mods ..
 mv overrides/config ..
-mv overrides ../data
+mv overrides/ ../data
 
 cat modrinth.index.json | jq '.files[].downloads[]' > ../extras/mods.txt
 
