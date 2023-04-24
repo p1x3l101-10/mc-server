@@ -3,8 +3,9 @@
 INSTANCE="${1:-"vanilla"}"
 
 BASEDIR="$(cd -- "$(dirname "$0")"; pwd -P)"
+
+cd $BASEDIR/instances/$INSTANCE
+./bootstrap.sh
+
 cd $BASEDIR
-
-eval $BASEDIR/instances/$INSTANCE/bootstrap.sh
-
 exec $BASEDIR/run.sh $INSTANCE
