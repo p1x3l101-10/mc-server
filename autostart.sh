@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-INSTANCE="vanilla"
+INSTANCE="${1:-"vanilla"}"
 
 cd $(dirname "$0")
 ./instances/$INSTANCE/bootstrap.sh
