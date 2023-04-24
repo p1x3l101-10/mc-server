@@ -40,5 +40,5 @@ if [[ $1 != "dry" ]]; then
   exec docker compose \
     --env-file ./.env \
     ${ARGS[@]} \
-    up -d
+    up
 fi
