@@ -5,7 +5,6 @@ MODRINTH_MODS=(
   'architectury-api'
   'create'
   'createaddition'
-  'fabric-api'
   'minecraft-comes-alive-reborn'
   'plasmo-voice'
   'valkyrien-skies'
@@ -16,6 +15,7 @@ mkdir -p data
 mkdir mods
 
 MODRINTH_MODS_INTERNAL=$(
+printf 'fabric-api'
 for mod in ${MODRINTH_MODS[@]}; do
   printf ",$mod"
 done
