@@ -5,7 +5,6 @@ MODRINTH_MODS=(
   'architectury-api'
   'create'
   'createaddition'
-  'minecraft-comes-alive-reborn'
   'plasmo-voice'
   'valkyrien-skies'
   'eureka'
