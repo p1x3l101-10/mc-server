@@ -7,9 +7,9 @@ BUILDCONF = "./build.conf"
 MC_VERS = $(shell $(LIBDIR)/modrinth/pack-mc-ver.sh $(MODRINTH_PACK_SLUG))
 MODLOADER = $(shell $(LIBDIR)/modrinth/pack-modloader.sh $(MODRINTH_PACK_SLUG))
 
-fresh: clean all
-
 all: download overrides
+
+fresh: clean all
 
 clean:
 	rm -r config
