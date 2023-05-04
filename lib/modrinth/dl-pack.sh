@@ -31,7 +31,9 @@ chmod 755 -R overrides
 cd overrides
 mv mods ../..
 mv config ../..
-cd ../../mods
+cd ..
+mv overrides ../data
+cd ../mods
 wget -nv $(jq -r '.files[].downloads[0]?' ../download/modrinth.index.json)
 cd ..
 rm -r download
