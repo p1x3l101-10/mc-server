@@ -12,6 +12,7 @@ all: download overrides
 fresh: clean all
 
 clean:
+	rm -r data
 	rm -r config
 	rm -r mods
 	rm overrides.yml
