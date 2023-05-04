@@ -2,3 +2,5 @@
 .env
 /server-overrides.yml
 !/instances/*/bootstrap.sh
+!/instances/*/Makefile
+!/instances/*/build.conf
