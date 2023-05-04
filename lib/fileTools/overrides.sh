@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-rm $PREFIX/overrides.yml
 IFS='~'
 ENVVARS=()
 VOLS=()
@@ -29,14 +28,9 @@ for arg in "$@" "--env"; do
   DEST=$NEWDEST
 done
 
-DBLprintf() {
-  printf "$@"
-  printf "$@" 1>&2
-}
-
 toFile() {
-  DBLprintf "$@" >> overrides.yml
-  DBLprintf '\n' >> overrides.yml
+  printf "$@" >> overrides.yml
+  printf '\n' >> overrides.yml
 }
 
 toFile "services:"
