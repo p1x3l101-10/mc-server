@@ -45,8 +45,13 @@ for environ in ${ENVVARS[@]}; do
   toFile "      $environ"
 done
 
-toFile "      VERSION: $MC_VERS"
-toFile "      TYPE: $MODLOADER"
+if [[ -n $MC_VERS ]]; then
+  toFile "      VERSION: $MC_VERS"
+fi
+
+if [[ -n $MC_VERS ]]; then
+  toFile "      TYPE: $MODLOADER"
+fi
 
 toFile ""
 
