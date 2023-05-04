@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+toFile() {
+  printf "$@" >> overrides.yml
+  printf '\n' >> overrides.yml
+}
+
+toFile "services:"
+toFile "  mc:"
+toFile "    environment:"
+
 IFS='~'
 ENVVARS=()
 VOLS=()
@@ -13,6 +22,9 @@ for arg in "$@" "--env"; do
       NEWDEST='VOLUME'
       NEW='true'
       ;;
+    --img)
+      NEWDEST="IMAGE"
+      NEW='true'
     *)
       NEW='false'
       work+="$arg"
@@ -22,20 +34,12 @@ for arg in "$@" "--env"; do
     case $DEST in
       'ENVVAR')ENVVARS+=( "$work" );;
       'VOLUME')VOLS+=( "$work" );;
+      'IMAGE')toFile "      image: $work";;
     esac
     unset work
   fi
   DEST=$NEWDEST
 done
-
-toFile() {
-  printf "$@" >> overrides.yml
-  printf '\n' >> overrides.yml
-}
-
-toFile "services:"
-toFile "  mc:"
-toFile "    environment:"
 
 for environ in ${ENVVARS[@]}; do
   toFile "      $environ"
