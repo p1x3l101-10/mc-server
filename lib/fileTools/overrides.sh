@@ -7,7 +7,6 @@ toFile() {
 
 toFile "services:"
 toFile "  mc:"
-toFile "    environment:"
 
 IFS='~'
 ENVVARS=()
@@ -25,21 +24,24 @@ for arg in "$@" "--env"; do
     --img)
       NEWDEST="IMAGE"
       NEW='true'
+      ;;
     *)
       NEW='false'
-      work+="$arg"
+      work+="$arg "
       ;;
   esac
   if [[ $NEW == 'true' ]];then
     case $DEST in
       'ENVVAR')ENVVARS+=( "$work" );;
       'VOLUME')VOLS+=( "$work" );;
-      'IMAGE')toFile "      image: $work";;
+      'IMAGE')toFile "    image: $work";;
     esac
     unset work
   fi
   DEST=$NEWDEST
 done
+
+toFile "    environment:"
 
 for environ in ${ENVVARS[@]}; do
   toFile "      $environ"
