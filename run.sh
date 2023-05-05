@@ -38,8 +38,8 @@ if [[ $1 != "dry" ]]; then
 
   docker compose \
     --env-file ./.env \
-    --quiet-pull \
     ${ARGS[@]} \
-    up
+    up \
+    --quiet-pull
   exit 0
 fi
