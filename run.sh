@@ -43,5 +43,5 @@ if [[ $1 != "dry" ]]; then
     ${ARGS[@]} \
     up \
     --quiet-pull
-  exit 0
+  exit $?
 fi
