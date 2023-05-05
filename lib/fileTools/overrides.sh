@@ -32,8 +32,8 @@ for arg in "$@" "--env"; do
   esac
   if [[ $NEW == 'true' ]];then
     case $DEST in
-      'ENVVAR')ENVVARS+=( "$work" );;
-      'VOLUME')VOLS+=( "$work" );;
+      'ENVVAR')ENVVARS+=("$work");;
+      'VOLUME')VOLS+=("$work");;
       'IMAGE')toFile "    image: $work";;
     esac
     unset work
