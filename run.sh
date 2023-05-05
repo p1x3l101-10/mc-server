@@ -33,7 +33,7 @@ if [[ $1 != "dry" ]]; then
     exit 1
   fi
 
-  ln -sf ./instances/$instance/overrides.yml ./overrides.yml || \
+  ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
     exit 1
   
   trap "./stop.sh" INT TERM EXIT
