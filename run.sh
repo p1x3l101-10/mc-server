@@ -36,8 +36,9 @@ if [[ $1 != "dry" ]]; then
   ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
     exit 1
 
-  exec docker compose \
+  docker compose \
     --env-file ./.env \
     ${ARGS[@]} \
     up
+  exit 0
 fi
