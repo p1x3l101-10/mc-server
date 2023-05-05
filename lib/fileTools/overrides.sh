@@ -11,7 +11,7 @@ toFile "  mc:"
 IFS='~'
 ENVVARS=()
 VOLS=()
-for arg in "$@" "--env"; do
+for arg in "$@" "--dry"; do
   case $arg in
     --env)
       NEWDEST='ENVVAR'
@@ -25,9 +25,13 @@ for arg in "$@" "--env"; do
       NEWDEST="IMAGE"
       NEW='true'
       ;;
+    --dry)
+      NEWDEST="NONE"
+      NEW='true'
+      ;;
     *)
       NEW='false'
-      work+="$arg "
+      work+=" $arg"
       ;;
   esac
   if [[ $NEW == 'true' ]];then
