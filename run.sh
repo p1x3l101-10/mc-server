@@ -35,6 +35,8 @@ if [[ $1 != "dry" ]]; then
 
   ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
     exit 1
+  
+  trap "./stop.sh" INT TERM EXIT
 
   docker compose \
     --env-file ./.env \
