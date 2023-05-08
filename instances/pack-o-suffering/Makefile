@@ -1,4 +1,4 @@
-PACK_FILE = "http://pixel-101.ddns.net:7001/pack-o-suffering.mrpack"
+PACK_FILE = "http://192.168.42.6/pack-o-suffering.mrpack"
 PACK_TYPE = "modrinth"
 PREFIX = $(shell pwd -P)
 LIBDIR = "../../lib"
