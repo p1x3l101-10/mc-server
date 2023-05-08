@@ -30,8 +30,12 @@ for arg in "$@" "--dry"; do
       NEW='true'
       ;;
     *)
-      NEW='false'
-      work+=" $arg"
+      if [[ $NEW == true ]];then
+        NEW='false'
+        work+="$arg"
+      else
+        work+=" $arg"
+      fi
       ;;
   esac
   if [[ $NEW == 'true' ]];then
