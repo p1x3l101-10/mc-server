@@ -8,6 +8,7 @@ services:
     environment: # Check the docks first https://itzg.github.io/docker-minecraft-docs/java/configuration
       EULA: "true"
       WHITELIST_FILE: /global/whitelist.json
+      OPS_FILE: /global/ops.json
       RCON_PASSWORD: ${RCON_PASSWORD}
       MAX_PLAYERS: 10
       ALLOW_NETHER: true
