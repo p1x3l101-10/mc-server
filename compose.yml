@@ -7,7 +7,6 @@ services:
     image: itzg/minecraft-server:java17-alpine # For different java versions than default see https://itzg.github.io/docker-minecraft-docs/java/versions/java
     environment: # Check the docks first https://itzg.github.io/docker-minecraft-docs/java/configuration
       EULA: "true"
-      WHITELIST_FILE: /global/whitelist.json
       OPS_FILE: /global/ops.json
       RCON_PASSWORD: ${RCON_PASSWORD}
       MAX_PLAYERS: 10
