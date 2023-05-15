@@ -2,8 +2,6 @@
 
 source ./run.sh . dry
 
-rm ./server-overrides.yml
-
 docker compose \
   --env-file ./.env \
   ${ARGS[@]} \
@@ -19,3 +17,5 @@ docker compose \
   --force \
   --stop \
   --volumes 
+
+rm ./server-overrides.yml
