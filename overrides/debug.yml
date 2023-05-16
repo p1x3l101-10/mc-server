@@ -5,3 +5,7 @@ services:
     image: scratch
     profiles:
       - disabled
+  mc-backup:
+    image: scratch
+    profiles:
+      - disabled

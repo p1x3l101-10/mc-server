@@ -1,6 +1,8 @@
 /instances/*/*
+/mc-backup/**
 .env
 /server-overrides.yml
+!/mc-backup/.keepdir
 !/instances/*/bootstrap.sh
 !/instances/*/Makefile
 !/instances/*/build.conf

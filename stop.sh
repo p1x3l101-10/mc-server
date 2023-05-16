@@ -19,3 +19,4 @@ docker compose \
   --volumes 
 
 rm ./server-overrides.yml
+rm ./.env.gen

@@ -1,0 +1,29 @@
+services:
+  mc-backup:
+    image: itzg/mc-backup
+    environment:
+      BACKUP_INTERVAL: "2h"
+      RCON_HOST: mc
+      PRE_BACKUP_SCRIPT: |
+        echo "Performing backup from $$RCON_HOST to $$DEST_DIR"
+      BACKUP_NAME: ${INSTANCE_NAME}
+      PRUNE_BACKUPS_DAYS: 7
+      PAUSE_IF_NO_PLAYERS: true
+      EXCLUDES_FILE: /backups/backupIgnore
+
+      BACKUP_METHOD: tar
+      DEST_DIR: /backups
+      LINK_LATEST: true
+      TAR_COMPRESS_METHOD: gzip
+
+    volumes:
+      - data:/data:ro
+      - backups:/backups
+
+volumes:
+  backups:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './mc-backups'

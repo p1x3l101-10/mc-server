@@ -5,3 +5,4 @@ volumes:
   plugins:
   config: 
   global:
+  backups:
