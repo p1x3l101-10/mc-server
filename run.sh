@@ -8,6 +8,7 @@ OVERRIDES=(
   'whitelist.yml'
   'online-mode.yml'
   'backups.yml'
+  'autopause.yml'
 )
 
 for file in ${OVERRIDES[@]}; do
