@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker exec -i $1 rcon-cli
+container=${1:-"mc-server-mc-1"}
+
+docker exec -i $container rcon-cli
