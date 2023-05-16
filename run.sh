@@ -7,6 +7,7 @@ OVERRIDES=(
   'no-pvp.yml'
   'whitelist.yml'
   'online-mode.yml'
+  'backups.yml'
 )
 
 for file in ${OVERRIDES[@]}; do
