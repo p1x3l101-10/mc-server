@@ -6,6 +6,8 @@ shift
 OVERRIDES=(
   'force-redownload.yml'
   'no-pvp.yml'
+  'whitelist.yml'
+  'online-mode.yml'
 )
 
 for file in ${OVERRIDES[@]}; do
