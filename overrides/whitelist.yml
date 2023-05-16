@@ -2,3 +2,5 @@ services:
   mc:
     environment: 
       WHITELIST_FILE: /global/whitelist.json
+      OBERRIDE_WHITELIST: true
+      ENABLE_WHITELIST: true

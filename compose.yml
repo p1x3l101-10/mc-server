@@ -16,6 +16,7 @@ services:
       PVP: true
       ONLINE_MODE: false
       ALLOW_FLIGHT: true
+      ENABLE_WHITELIST: false
       SERVER_NAME: "Pixel's Server"
       GUI: false
       MEMORY: 4G
