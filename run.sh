@@ -20,6 +20,7 @@ for file in ${OVERRIDES[@]}; do
 done
 
 ARGS=( 
+  '--env-file ./.env.gen'
   '--file overrides/undefined-volumes.yml'
   '--file compose.yml' 
   ${FILE_ARGS[@]} 
@@ -30,11 +31,15 @@ ARGS=(
 if [[ $1 != "dry" ]]; then
   if [[ ! -f "./instances/$instance/overrides.yml" ]]; then
     if [[ -d "./instances/$instance" ]]; then
-      echo "$instance exists, but is not built yet..."
+      echo "Automatically building $instance"
+      make -C ./instances/$instance
+      if [[ $? -ne 0 ]]; then
+        exit 1
+      fi
     else
       echo "$instance is not a valid instance!"
+      exit 1
     fi
-    exit 1
   fi
 
   ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
@@ -45,7 +50,6 @@ if [[ $1 != "dry" ]]; then
   echo "INSTANCE_NAME=\"$instance\"" >> ./.env.gen
 
   docker compose \
-    --env-file ./.env.gen \
     ${ARGS[@]} \
     up \
     --quiet-pull
