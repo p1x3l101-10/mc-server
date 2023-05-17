@@ -2,4 +2,3 @@ services:
   mc:
     environment:
       UID: ${UID}
-      GUD: ${GID}

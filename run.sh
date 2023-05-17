@@ -10,6 +10,7 @@ OVERRIDES=(
   'online-mode.yml'
   'backups.yml'
   'autopause.yml'
+  'alt-uid_gid.yml'
 )
 
 for file in ${OVERRIDES[@]}; do
@@ -50,6 +51,7 @@ if [[ $1 != "dry" ]]; then
   cat ./.env > ./.env.gen
   echo "INSTANCE_NAME='$instance'" >> ./.env.gen
   echo "BASE_PREFIX='$PREFIX'" >> ./.env.gen
+  echo "UID='$UID'" >> ./.env.gen
 
   docker compose \
     ${ARGS[@]} \
