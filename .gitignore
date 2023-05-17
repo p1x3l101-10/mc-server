@@ -2,6 +2,7 @@
 /mc-backup/**
 .env
 .env.gen
+.DS_Store
 /server-overrides.yml
 !/mc-backup/.keepdir
 !/instances/*/bootstrap.sh
