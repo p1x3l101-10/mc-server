@@ -46,10 +46,10 @@ if [[ $1 != "dry" ]]; then
   ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
     exit 1
   
-  trap "./stop.sh" INT TERM EXIT
+  #trap "./stop.sh" INT TERM EXIT
   cat ./.env > ./.env.gen
-  echo "INSTANCE_NAME=\'$instance\'" >> ./.env.gen
-  echo "BASE_PREFIX=\'$PREFIX\'" >> ./.env.gen
+  echo "INSTANCE_NAME='$instance'" >> ./.env.gen
+  echo "BASE_PREFIX='$PREFIX'" >> ./.env.gen
 
   docker compose \
     ${ARGS[@]} \
