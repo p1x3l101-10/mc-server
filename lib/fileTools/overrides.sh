@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+BASEDIR=$(basename $PREFIX)
+
 toFile() {
   printf "$@" >> overrides.yml
   printf '\n' >> overrides.yml
@@ -72,5 +74,5 @@ for volume in ${VOLS[@]}; do
   toFile "    driver_opts:"
   toFile "      type: 'none'"
   toFile "      o: 'bind'"
-  toFile "      device: '$PREFIX/$volume'"
+  toFile "      device: \${BASE_PREFIX}/instances/$BASEDIR/$volume"
 done
