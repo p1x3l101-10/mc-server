@@ -47,7 +47,7 @@ if [[ $1 != "dry" ]]; then
   
   trap "./stop.sh" INT TERM EXIT
   cat ./.env > ./.env.gen
-  echo "INSTANCE_NAME=\"$instance\"" >> ./.env.gen
+  echo "INSTANCE_NAME=\'$instance\'" >> ./.env.gen
 
   docker compose \
     ${ARGS[@]} \
