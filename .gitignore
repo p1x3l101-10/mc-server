@@ -1,6 +1,7 @@
 /instances/*/*
 /mc-backup/**
 .env
+.env.gen
 /server-overrides.yml
 !/mc-backup/.keepdir
 !/instances/*/bootstrap.sh
