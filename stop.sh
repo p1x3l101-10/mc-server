@@ -3,7 +3,6 @@
 source ./run.sh . dry
 
 docker compose \
-  --env-file ./.env \
   ${ARGS[@]} \
   down \
   --remove-orphans \
