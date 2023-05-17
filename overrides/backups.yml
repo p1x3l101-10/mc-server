@@ -26,4 +26,4 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: ${PREFIX}/mc-backups
+      device: ${BASE_PREFIX}/mc-backups
