@@ -1,10 +1,5 @@
-/instances/*/*
-/mc-backup/**
-.env
-.env.gen
-.DS_Store
-/server-overrides.yml
-!/mc-backup/.keepdir
-!/instances/*/bootstrap.sh
-!/instances/*/Makefile
-!/instances/*/build.conf
+/*
+!/.gitignore
+!/PKGBUILD
+!/run.sh
+!/minecraft@.service

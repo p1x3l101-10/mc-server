@@ -1,0 +1,8 @@
+[Unit]
+Description=Minecraft instance "%i"
+
+[Service]
+ExecStart=/usr/share/mc-server/run.sh %I
+
+[Install]
+WantedBy=network.target

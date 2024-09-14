@@ -1,61 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env dash
 
-instance="$1"
-shift
-PREFIX="$(cd -- "$(dirname "$0")"; pwd -P)"
+NAME="$1"
+PREFIX="./${NAME}"
+#PREFIX="/var/lib/mc-${NAME}"
 
-OVERRIDES=(
-  'no-pvp.yml'
-  'whitelist.yml'
-  'online-mode.yml'
-  'backups.yml'
-  'autopause.yml'
-  'alt-uid_gid.yml'
-)
-
-for file in ${OVERRIDES[@]}; do
-  if [[ -f "overrides/$file" ]]; then
-    FILE_ARGS=( ${FILE_ARGS[@]} '--file' 'overrides/'"$file" )
-  else
-    echo "WARN: overrides/$file dows not exist"
-  fi
-done
-
-ARGS=( 
-  '--env-file ./.env.gen'
-  '--file overrides/undefined-volumes.yml'
-  '--file compose.yml' 
-  ${FILE_ARGS[@]} 
-  '--file server-overrides.yml' 
-  ${ARGS[@]} 
-)
-
-if [[ $1 != "dry" ]]; then
-  if [[ ! -f "./instances/$instance/overrides.yml" ]]; then
-    if [[ -d "./instances/$instance" ]]; then
-      echo "Automatically building $instance"
-      make -C ./instances/$instance
-      if [[ $? -ne 0 ]]; then
+if ! [ -d "$PREFIX" ]; then
+    if [ -e "$PREFIX" ]; then
+        echo "${PREFIX} already exists!"
         exit 1
-      fi
-    else
-      echo "$instance is not a valid instance!"
-      exit 1
     fi
-  fi
-
-  ln -sf ./instances/$instance/overrides.yml ./server-overrides.yml || \
-    exit 1
-  
-  trap "./stop.sh" INT TERM EXIT
-  cat ./.env > ./.env.gen
-  echo "INSTANCE_NAME='$instance'" >> ./.env.gen
-  echo "BASE_PREFIX='$PREFIX'" >> ./.env.gen
-  echo "UID='$UID'" >> ./.env.gen
-
-  docker compose \
-    ${ARGS[@]} \
-    up \
-    --quiet-pull
-  exit $?
+    mkdir -p "$PREFIX"
+    mkdir "${PREFIX}/data"
+    mkdir "${PREFIX}/config"
+    echo "EULA=false" > "${PREFIX}/minecraft.env"
+    echo "docker.io/itzg/minecraft-server:latest" > "${PREFIX}/config/runtime"
+    echo "25565" > "${PREFIX}/config/port"
 fi
+
+exec podman run --name="$NAME" --env-file="${PREFIX}/minecraft.env" --volume="${PREFIX}/data:/data:rw" --publish=25565:$(cat "${PREFIX}/config/port") $(cat "${PREFIX}/config/runtime")
