@@ -11,7 +11,9 @@ if ! [ -d "$PREFIX" ]; then
     mkdir -p "$PREFIX"
     mkdir "${PREFIX}/data"
     mkdir "${PREFIX}/config"
-    echo "EULA=false" > "${PREFIX}/minecraft.env"
+    echo "# This file only contains the environment for the container, see '${PREFIX}/config' for other values" > "${PREFIX}/minecraft.env"
+    echo "# See https://docker-minecraft-server.readthedocs.io/en/latest for configuration" > "${PREFIX}/minecraft.env"
+    echo "EULA=false" >> "${PREFIX}/minecraft.env"
     echo "docker.io/itzg/minecraft-server:latest" > "${PREFIX}/config/runtime"
     echo "25565" > "${PREFIX}/config/port"
 fi
