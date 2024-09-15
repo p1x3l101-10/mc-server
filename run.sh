@@ -1,7 +1,7 @@
 #!/usr/bin/env dash
 
-NAME="$1"
-PREFIX="/var/lib/mc-${NAME}"
+NAME="mc-$1"
+PREFIX="/var/lib/${NAME}"
 
 if ! [ -d "$PREFIX" ]; then
     if [ -e "$PREFIX" ]; then

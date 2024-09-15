@@ -1,5 +1,5 @@
 #!/usr/bin/env dash
-NAME="$1"
+NAME="mc-$1"
 
 podman rm "$NAME"
 returnVal="$?"
