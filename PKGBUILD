@@ -7,6 +7,7 @@ url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
 depends=('dash' 'podman')
 source=('run.sh' 'minecraft@.service')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
     install -D -m755 run.sh "$pkgdir/usr/share/mc-server/run.sh"
