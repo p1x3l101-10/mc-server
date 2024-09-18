@@ -27,7 +27,7 @@ if ! [ -d "$PREFIX" ]; then
     exit 1
 fi
 
-exec podman run \
+(podman run \
   --rm \
   --name="$NAME" \
   --env-file="${PREFIX}/minecraft.env" \
@@ -38,4 +38,5 @@ exec podman run \
   --volume="${PREFIX}/data/mods:/mods:ro" \
   --volume="${PREFIX}/data/config:/config:ro" \
   --publish=25565:$(cat "${PREFIX}/config/port") \
-  $(cat "${PREFIX}/config/runtime")
+  $(cat "${PREFIX}/config/runtime") \
+) &

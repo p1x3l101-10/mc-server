@@ -2,6 +2,7 @@
 Description=Minecraft instance "%i"
 
 [Service]
+Type=forking
 ExecStart=/usr/share/mc-server/run.sh %i
 ExecStop=/usr/bin/podman exec mc-%i rcon-cli stop
 
