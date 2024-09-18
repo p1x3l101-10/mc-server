@@ -33,7 +33,7 @@ exec podman run \
   --env-file="${PREFIX}/minecraft.env" \
   --volume="${PREFIX}/data/data:/data:rw" \
   --volume="${PREFIX}/data/downloads:/downloads:rw" \
-  --volume="${PREFIX}/data/manifests/:manifests:ro" \
+  --volume="${PREFIX}/data/manifests:/manifests:ro" \
   --volume="${PREFIX}/data/plugins:/plugins:ro" \
   --volume="${PREFIX}/data/mods:/mods:ro" \
   --volume="${PREFIX}/data/config:/config:ro" \
