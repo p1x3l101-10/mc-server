@@ -1,7 +1,8 @@
 #!/usr/bin/env dash
 
-NAME="mc-$1"
-PREFIX="/var/lib/${NAME}"
+NAME="$1"
+NAMESPACE="mc-$1"
+PREFIX="/var/lib/minecraft/${NAME}"
 
 if ! [ -d "$PREFIX" ]; then
     if [ -e "$PREFIX" ]; then
@@ -33,7 +34,7 @@ fi
 
 (podman run \
   --rm \
-  --name="$NAME" \
+  --name="$NAMESPACE" \
   --env-file="${PREFIX}/minecraft.env" \
   --volume="${PREFIX}/data/data:/data:rw" \
   --volume="${PREFIX}/data/downloads:/downloads:rw" \
