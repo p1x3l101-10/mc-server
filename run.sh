@@ -9,6 +9,7 @@ if ! [ -d "$PREFIX" ]; then
         exit 1
     fi
     mkdir -p "$PREFIX"
+    mkdir "${PREFIX}/data"
     mkdir "${PREFIX}/data/data"
     mkdir "${PREFIX}/data/downloads"
     mkdir "${PREFIX}/data/manifests"
