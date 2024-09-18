@@ -11,6 +11,5 @@ sha256sums=('SKIP' 'SKIP')
 
 package() {
     install -D -m755 run.sh "$pkgdir/usr/share/mc-server/run.sh"
-    install -D -m755 stop.sh "$pkgdir/usr/share/mc-server/stop.sh"
     install -D -m644 minecraft@.service "$pkgdir/usr/lib/systemd/system/minecraft@.service"
 }
