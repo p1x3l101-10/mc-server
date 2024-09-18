@@ -2,8 +2,8 @@
 Description=Minecraft instance "%i"
 
 [Service]
-ExecStart=/usr/share/mc-server/run.sh %I
-ExecStop=/usr/share/mc-server/stop.sh %I
+ExecStart=/usr/share/mc-server/run.sh %i
+ExecStop=/usr/share/mc-server/stop.sh %i
 
 [Install]
 WantedBy=network.target
