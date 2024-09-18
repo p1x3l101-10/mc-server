@@ -9,7 +9,12 @@ if ! [ -d "$PREFIX" ]; then
         exit 1
     fi
     mkdir -p "$PREFIX"
-    mkdir "${PREFIX}/data"
+    mkdir "${PREFIX}/data/data"
+    mkdir "${PREFIX}/data/downloads"
+    mkdir "${PREFIX}/data/manifests"
+    mkdir "${PREFIX}/data/plugins"
+    mkdir "${PREFIX}/data/mods"
+    mkdir "${PREFIX}/data/config"
     mkdir "${PREFIX}/config"
     echo "# This file only contains the environment for the container, see '${PREFIX}/config' for other values" > "${PREFIX}/minecraft.env"
     echo "# See https://docker-minecraft-server.readthedocs.io/en/latest for configuration" > "${PREFIX}/minecraft.env"
@@ -22,4 +27,14 @@ if ! [ -d "$PREFIX" ]; then
     exit 1
 fi
 
-exec podman run --name="$NAME" --env-file="${PREFIX}/minecraft.env" --volume="${PREFIX}/data:/data:rw" --publish=25565:$(cat "${PREFIX}/config/port") $(cat "${PREFIX}/config/runtime")
+exec podman run \
+  --name="$NAME" \
+  --env-file="${PREFIX}/minecraft.env" \
+  --volume="${PREFIX}/data/data:/data:rw" \
+  --volume="${PREFIX}/data/downloads:/downloads:rw" \
+  --volume="${PREFIX}/data/manifests:manifests:ro" \
+  --volume="${PREFIX}/data/plugins:/plugins:ro" \
+  --volume="${PREFIX}/data/mods:/mods:ro" \
+  --volume="${PREFIX}/data/config:/config:ro" \
+  --publish=25565:$(cat "${PREFIX}/config/port") \
+  $(cat "${PREFIX}/config/runtime")
