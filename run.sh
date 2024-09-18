@@ -17,10 +17,13 @@ if ! [ -d "$PREFIX" ]; then
     mkdir "${PREFIX}/data/mods"
     mkdir "${PREFIX}/data/config"
     mkdir "${PREFIX}/config"
+    mkdir "${PREFIX}/config/runtime"
     echo "# This file only contains the environment for the container, see '${PREFIX}/config' for other values" > "${PREFIX}/minecraft.env"
     echo "# See https://docker-minecraft-server.readthedocs.io/en/latest for configuration" > "${PREFIX}/minecraft.env"
     echo "EULA=false" >> "${PREFIX}/minecraft.env"
-    echo "docker.io/itzg/minecraft-server:latest" > "${PREFIX}/config/runtime"
+    echo "docker.io" > "${PREFIX}/config/runtime/host"
+    echo "itzg/minecraft-server" > "${PREFIX}/config/runtime/container"
+    echo "latest" > "${PREFIX}/config/runtime/version"
     echo "25565" > "${PREFIX}/config/port"
 
     echo "Skeleton config has been setup, make sure to configure it"
@@ -39,5 +42,5 @@ fi
   --volume="${PREFIX}/data/mods:/mods:ro" \
   --volume="${PREFIX}/data/config:/config:ro" \
   --publish=25565:$(cat "${PREFIX}/config/port") \
-  $(cat "${PREFIX}/config/runtime") \
+  "$(cat "${PREFIX}/config/runtime/host")/$(cat "${PREFIX}/config/runtime/container"):$(cat "${PREFIX}/config/runtime/version")" \
 ) &
