@@ -3,7 +3,7 @@ Description=Minecraft instance "%i"
 
 [Service]
 ExecStart=/usr/share/mc-server/run.sh %i
-ExecStop=/usr/share/mc-server/stop.sh %i
+ExecStop=/usr/bin/podman exec mc-%i rcon-cli stop
 
 [Install]
 WantedBy=network.target

@@ -28,6 +28,7 @@ if ! [ -d "$PREFIX" ]; then
 fi
 
 exec podman run \
+  --rm \
   --name="$NAME" \
   --env-file="${PREFIX}/minecraft.env" \
   --volume="${PREFIX}/data/data:/data:rw" \
