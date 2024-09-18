@@ -19,9 +19,8 @@ if ! [ -d "$PREFIX" ]; then
     mkdir "${PREFIX}/data/config"
     mkdir "${PREFIX}/config"
     mkdir "${PREFIX}/config/runtime"
-    echo "# This file only contains the environment for the container, see '${PREFIX}/config' for other values" > "${PREFIX}/minecraft.env"
-    echo "# See https://docker-minecraft-server.readthedocs.io/en/latest for configuration" > "${PREFIX}/minecraft.env"
-    echo "EULA=false" >> "${PREFIX}/minecraft.env"
+    echo "# See https://docker-minecraft-server.readthedocs.io/en/latest for configuration" > "${PREFIX}/config/minecraft.env"
+    echo "EULA=false" >> "${PREFIX}/config/minecraft.env"
     echo "docker.io" > "${PREFIX}/config/runtime/host"
     echo "itzg/minecraft-server" > "${PREFIX}/config/runtime/container"
     echo "latest" > "${PREFIX}/config/runtime/version"
@@ -35,7 +34,7 @@ fi
 (podman run \
   --rm \
   --name="$NAMESPACE" \
-  --env-file="${PREFIX}/minecraft.env" \
+  --env-file="${PREFIX}/config/minecraft.env" \
   --volume="${PREFIX}/data/data:/data:rw" \
   --volume="${PREFIX}/data/downloads:/downloads:rw" \
   --volume="${PREFIX}/data/manifests:/manifests:ro" \
