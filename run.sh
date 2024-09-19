@@ -17,6 +17,7 @@ if ! [ -d "$PREFIX" ]; then
     mkdir "${PREFIX}/data/plugins"
     mkdir "${PREFIX}/data/mods"
     mkdir "${PREFIX}/data/config"
+    mkdir "${PREFIX}/data/extra"
     mkdir "${PREFIX}/config"
     mkdir "${PREFIX}/config/runtime"
     echo "# See https://docker-minecraft-server.readthedocs.io/en/latest for configuration" > "${PREFIX}/config/minecraft.env"
@@ -41,6 +42,7 @@ fi
   --volume="${PREFIX}/data/manifests:/manifests:ro" \
   --volume="${PREFIX}/data/plugins:/plugins:ro" \
   --volume="${PREFIX}/data/mods:/mods:ro" \
+  --volume="${PREFIX}/data/extra:/extra:ro" \
   --volume="${PREFIX}/data/config:/config:ro" \
   --publish=25565:$(cat "${PREFIX}/config/port") \
   "$(cat "${PREFIX}/config/runtime/host")/$(cat "${PREFIX}/config/runtime/container"):$(cat "${PREFIX}/config/runtime/version")" \
