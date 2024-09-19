@@ -33,6 +33,7 @@ fi
 
 (podman run \
   --rm \
+  --pull=newer \
   --name="$NAMESPACE" \
   --env-file="${PREFIX}/config/minecraft.env" \
   --volume="${PREFIX}/data/data:/data:rw" \
