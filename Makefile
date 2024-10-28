@@ -1,6 +1,6 @@
 DESTDIR=/usr/local
 
-.PHONY install
+.PHONY: install
 
 install:
 	install -D -m644 minecraft@.container $(DESTDIR)/share/containers/systemd/minecraft@.container
