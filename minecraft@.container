@@ -1,5 +1,6 @@
 [Unit]
 Description=Minecraft instance "%i"
+PartOf=minecraft.target
 
 [Container]
 Image=docker.io/itzg/minecraft-server:latest

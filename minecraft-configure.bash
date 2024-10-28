@@ -9,6 +9,7 @@ fi
 # Script start
 INSTANCE="${1}"
 
+# Create target that will pull in our minecraft unit
 cat <<EOF > /etc/systemd/system/minecraft.target
 [Unit]
 Description=Shim for minecraft@${INSTANCE}.service
