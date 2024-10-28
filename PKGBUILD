@@ -1,15 +1,15 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
-pkgver=2
-pkgrel=11
+pkgver=3
+pkgrel=0
 arch=('any')
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
-depends=('dash' 'podman')
-source=('run.sh' 'minecraft@.service')
+depends=('podman')
+source=('minecraft-setup.bash' 'minecraft@.container')
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-    install -D -m755 run.sh "$pkgdir/usr/share/mc-server/run.sh"
-    install -D -m644 minecraft@.service "$pkgdir/usr/lib/systemd/system/minecraft@.service"
+    install -D -m644 minecraft@.container $pkgdir/usr/share/containers/systemd/minecraft@.container
+    install -D -m755 minecraft-setup.baash $pkgdir/usr/lib/systemd/scripts/minecraft
 }

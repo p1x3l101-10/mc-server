@@ -1,0 +1,18 @@
+[Unit]
+Description=Minecraft instance "%i"
+
+[Container]
+Image=docker.io/itzg/minecraft-server:latest
+Pull=always
+PublishPort=25565:25565
+Volume=/var/lib/minecraft/%i/data:/data
+EnvironmentFile=/var/lib/minecraft/%i/config.env
+
+[Service]
+ExecStartPre=/usr/lib/systemd/scripts/minecraft %i
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
+DefaultInstance=vanilla

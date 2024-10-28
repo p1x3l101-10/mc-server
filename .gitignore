@@ -1,6 +1,2 @@
-/*
+/.trunk
 !/.gitignore
-!/PKGBUILD
-!/run.sh
-!/minecraft@.service
-!/stop.sh
