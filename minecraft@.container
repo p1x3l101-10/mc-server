@@ -7,6 +7,11 @@ Pull=always
 PublishPort=25565:25565
 Volume=/var/lib/minecraft/%i/data:/data
 EnvironmentFile=/var/lib/minecraft/%i/config.env
+HealthCmd=mc-health
+HealthOnFailure=kill
+HealthRetries=20
+HealthStartPeriod=1m
+HealthInterval=5s
 
 [Service]
 ExecStartPre=/usr/lib/systemd/scripts/minecraft %i
@@ -14,5 +19,5 @@ Restart=always
 TimeoutStartSec=900
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 DefaultInstance=vanilla
