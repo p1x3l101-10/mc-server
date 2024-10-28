@@ -17,7 +17,3 @@ HealthInterval=5s
 ExecStartPre=/usr/lib/systemd/scripts/minecraft %i
 Restart=always
 TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-DefaultInstance=vanilla
