@@ -21,4 +21,4 @@ EOF
 systemctl daemon-reload
 
 # Restart if already running
-[[ "$(systemctl show -property=ActiveState --value=minecraft.target)" == "running" ]] && systemctl restart minecraft.target
+[[ "$(systemctl show -property=ActiveState --value minecraft.target)" == "running" ]] && systemctl restart minecraft.target
