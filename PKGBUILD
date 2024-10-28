@@ -11,5 +11,5 @@ sha256sums=('SKIP' 'SKIP')
 
 package() {
     install -D -m644 minecraft@.container $pkgdir/usr/share/containers/systemd/minecraft@.container
-    install -D -m755 minecraft-setup.baash $pkgdir/usr/lib/systemd/scripts/minecraft
+    install -D -m755 minecraft-setup.bash $pkgdir/usr/lib/systemd/scripts/minecraft
 }
