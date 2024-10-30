@@ -1,7 +1,7 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
 pkgver=3
-pkgrel=7
+pkgrel=9
 arch=('any')
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
