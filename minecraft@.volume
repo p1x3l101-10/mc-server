@@ -2,5 +2,6 @@
 Description=Data for minecraft instance '%i'
 
 [Volume]
+VolumeName=minecraft-volume@
 User=1000
 Group=1000

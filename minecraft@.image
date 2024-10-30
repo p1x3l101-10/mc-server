@@ -2,6 +2,7 @@
 Description=Minecraft container image "%i"
 
 [Image]
+ImageName=minecraft-image@.service
 Image=docker.io/itzg/minecraft-server:%i
 TLSVerify=true
 
