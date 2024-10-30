@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 NAME="$1"
-PREFIX="/var/lib/minecraft/${NAME}"
 
-if ! [[ -d "${PREFIX}" ]]; then
-    if [[ -e "${PREFIX}" ]]; then
-        echo "Prefix already exists, and is not a directory"
+if ! [[ -f "/etc/mincraft/${NAME}.env" ]]; then
+    if [[ -e "/etc/mincraft/${NAME}.env" ]]; then
         exit 1
     fi
-    echo "Creating prefix for '${NAME}'"
-    mkdir -p "${PREFIX}"
-    mkdir "${PREFIX}/data"
-    echo -e "# See documentation at 'https://docker-minecraft-server.readthedocs.io/en/latest/variables'\nEULA=false" > "${PREFIX}/config.env"
-    echo "Prefix for '${NAME}' created, please configure it at '${PREFIX}/config.env'"
+    echo "Creating template config '${NAME}'"
+    mkdir -p "/etc/minecraft"
+    echo -e "# See documentation at 'https://docker-minecraft-server.readthedocs.io/en/latest/variables'\nEULA=false" > "/etc/mincraft/${NAME}.env"
+    echo "Config for '${NAME}' created, please configure it at '/etc/mincraft/${NAME}.env'"
     exit 1
 fi

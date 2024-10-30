@@ -1,0 +1,9 @@
+[Unit]
+Description=Minecraft container image "%i"
+
+[Image]
+Image=docker.io/itzg/minecraft-server:%i
+TLSVerify=true
+
+[Service]
+TimeoutStartSec=120
