@@ -3,13 +3,11 @@ Description=Minecraft instance "%i"
 PartOf=minecraft.target
 
 [Container]
-# Must be overriden
-# Image=minecraft@{YOUR_IMAGE_VERSION_HERE}.image
-# See the vanilla override for examples
+Image=docker.io/itzg/minecraft-server:latest
 Pull=always
 PublishPort=25565:25565
-Volume=minecraft@%i.volume:/data
-EnvironmentFile=/etc/minecraft/%i.env
+Volume=/var/lib/minecraft/%i/data:/data
+EnvironmentFile=/var/lib/minecraft/%i/config.env
 HealthCmd=mc-health
 HealthOnFailure=kill
 HealthRetries=20
@@ -19,3 +17,4 @@ HealthInterval=5s
 [Service]
 ExecStartPre=/usr/lib/systemd/scripts/minecraft %i
 Restart=always
+TimeoutStartSec=900
