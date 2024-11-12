@@ -1,12 +1,13 @@
 [Unit]
 Description=Minecraft instance "%i"
 PartOf=minecraft.target
+Requires=minecraft-setup@%i.service
 
 [Container]
-Image=minecraft.image
-Pull=always
+Image=minecraft-%i.image
 PublishPort=25565:25565
 Volume=/var/lib/minecraft/%i/data:/data
+Volume=minecraft-downloads.volume:/downloads
 EnvironmentFile=/var/lib/minecraft/%i/config.env
 HealthCmd=mc-health
 HealthOnFailure=kill
@@ -15,5 +16,4 @@ HealthStartPeriod=1m
 HealthInterval=5s
 
 [Service]
-ExecStartPre=/usr/lib/systemd/scripts/minecraft %i
 Restart=always
