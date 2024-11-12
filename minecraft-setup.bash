@@ -10,6 +10,9 @@ if ! [[ -d "${PREFIX}" ]]; then
     echo "Creating prefix for '${NAME}'"
     mkdir -p "${PREFIX}"
     mkdir "${PREFIX}/data"
+    cp /usr/share/containers/systemd/minecraft.image "${PREFIX}/minecraft.image"
+    ln -s "${PREFIX}/minecraft.image" "/etc/containers/systemd/minecraft-${NAME}.image"
+    echo -e "[Container]\nImage=minecraft-${NAME}.image\n" > "/etc/containers/systemd/minecraft@${NAME}.d/image-config.conf"
     echo -e "# See documentation at 'https://docker-minecraft-server.readthedocs.io/en/latest/variables'\nEULA=false" > "${PREFIX}/config.env"
     echo "Prefix for '${NAME}' created, please configure it at '${PREFIX}/config.env'"
     exit 1
