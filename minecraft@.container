@@ -3,7 +3,7 @@ Description=Minecraft instance "%i"
 PartOf=minecraft.target
 
 [Container]
-Image=docker.io/itzg/minecraft-server:latest
+Image=minecraft.image
 Pull=always
 PublishPort=25565:25565
 Volume=/var/lib/minecraft/%i/data:/data
@@ -17,4 +17,3 @@ HealthInterval=5s
 [Service]
 ExecStartPre=/usr/lib/systemd/scripts/minecraft %i
 Restart=always
-TimeoutStartSec=900

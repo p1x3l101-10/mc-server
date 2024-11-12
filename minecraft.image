@@ -1,0 +1,9 @@
+[Unit]
+Description=Download minecraft image
+Requires=network.target
+
+[Image]
+Image=docker.io/itzg/minecraft-server:latest
+Arch=x86_64
+# Pull all versions to make switching more easy
+AllTags=true
