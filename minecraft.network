@@ -3,5 +3,5 @@ Description=Minecraft Network
 PartOf=minecraft.target
 
 [Network]
-Subnet=192.168.27.0/24
-Gateway=192.168.27.1
+Subnet=192.168.100.0/24
+Gateway=192.168.100.1
