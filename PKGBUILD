@@ -43,7 +43,7 @@ package() {
         install -D -m644 $unit $pkgdir/usr/lib/systemd/system
     done
     for config in config backup; do
-        install -D -m644 $config.env $pkgdir/usr/share/factory/$config.env
+        install -D -m644 $config.env $pkgdir/usr/share/factory/etc/minecraft/$config.env
         install -D -m644 $config-system.env $pkgdir/usr/lib/minecraft/$config.env
     done
     install -D -m644 tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/minecraft.conf
