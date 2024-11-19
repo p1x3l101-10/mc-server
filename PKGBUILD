@@ -40,7 +40,7 @@ package() {
         install -D -m644 $quadlet $pkgdir/usr/share/containers/systemd/$quadlet
     done
     for unit in minecraft.target; do # Should only run once, but I am a big fan of future-proofing
-        install -D -m644 $unit $pkgdir/usr/lib/systemd/system
+        install -D -m644 $unit $pkgdir/usr/lib/systemd/system/$unit
     done
     for config in config backup; do
         install -D -m644 $config.env $pkgdir/usr/share/factory/etc/minecraft/$config.env
