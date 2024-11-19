@@ -20,7 +20,6 @@ _units=(
 source=(
     "${_quadlets[@]}"
     "${_units[@]}"
-    'minecraft.target'
     'tmpfiles.conf'
     'sysuser.conf'
     'config.env'
