@@ -14,6 +14,9 @@ if ! [[ -d "${PREFIX}" ]]; then
     ln -s "${PREFIX}/minecraft.image" "/etc/containers/systemd/minecraft-${NAME}.image"
     mkdir -p "/etc/containers/systemd/minecraft@${NAME}.container.d"
     echo -e "[Container]\nImage=minecraft-${NAME}.image\n" > "/etc/containers/systemd/minecraft@${NAME}.container.d/image-config.conf"
+    ln -s /usr/share/containers/systemd/minecraft@.container "/etc/containers/systemd/minecraft@${NAME}.container"
+    ln -s "/etc/containers/systemd/minecraft@${NAME}.container.d/override" "${PREFIX}/override.conf"
+    touch "${PREFIX}/override.conf"
     echo -e "# See documentation at 'https://docker-minecraft-server.readthedocs.io/en/latest/variables'\nEULA=false" > "${PREFIX}/config.env"
     echo "Prefix for '${NAME}' created, please configure it at '${PREFIX}/config.env'"
     exit 1
