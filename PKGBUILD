@@ -39,7 +39,7 @@ package() {
     for quadlet in minecraft{.{container,image,pod,network},-backup.{container,image}}; do
         install -D -m644 $quadlet $pkgdir/usr/share/containers/systemd/$quadlet
     done
-    for unit in minecraft{.target,setup.service}; do
+    for unit in minecraft.target; do # Should only run once, but I am a big fan of future-proofing
         install -D -m644 $unit $pkgdir/usr/lib/systemd/system
     done
     for config in config backup; do
