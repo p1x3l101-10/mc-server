@@ -1,9 +1,0 @@
-post_install(){
-    echo "minecraft:165536:65536" >> /etc/subuid
-    echo "minecraft:165536:65536" >> /etc/subgid
-}
-
-post_remove(){
-    sed -ni '/minecraft/!p' /etc/subuid
-    sed -ni '/minecraft/!p' /etc/subgid
-}
