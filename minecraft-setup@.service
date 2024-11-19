@@ -1,6 +1,0 @@
-[Unit]
-Description=Setup directory for instance %i
-
-[Service]
-Type=oneshot
-ExecStart=/usr/lib/systemd/scripts/minecraft %i

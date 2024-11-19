@@ -1,7 +1,6 @@
 [Unit]
-Description=Download minecraft image
-Requires=network.target
+Description=Minecraft image download
 
 [Image]
-Image=docker.io/itzg/minecraft-server:latest
-Arch=x86_64
+Image=docker.io/itzg/minecraft-server
+Arch=amd64

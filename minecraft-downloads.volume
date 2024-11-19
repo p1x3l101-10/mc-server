@@ -1,6 +1,0 @@
-[Unit]
-Description=Global minecraft downloads
-
-[Volume]
-Device=/var/lib/minecraft/.downloads
-Driver=local

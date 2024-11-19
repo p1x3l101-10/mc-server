@@ -1,0 +1,11 @@
+[Unit]
+Description=Minecraft Server Backups
+PartOf=minecraft.service
+
+[Container]
+Image=minecraft-backup.image
+Volume=/var/lib/minecraft/backups:/backups
+EnvironmentFile=/usr/lib/minecraft/backup.env
+EnvironmentFile=/etc/minecraft/backup.env
+Pod=minecraft.pod
+Network=minecraft.network

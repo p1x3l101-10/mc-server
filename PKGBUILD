@@ -1,32 +1,51 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
-pkgver=3.13
+pkgver=4.0.0
 pkgrel=1
-arch=('any')
+arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
 depends=('podman')
 source=(
-    'minecraft-cleanup.bash'
-    'minecraft-setup.bash'
-    'minecraft@.container'
-    'minecraft-configure.bash'
+    'minecraft.container'
     'minecraft.image'
-    'minecraft-setup@.service'
+    'minecraft-backup.container'
+    'minecraft-backup.image'
+    'minecraft.network'
+    'minecraft.pod'
+    'minecraft.target'
+    'tmpfiles.conf'
+    'sysuser.conf'
+    'minecraft.env'
+    'minecraft-system.env'
+    'backup.env'
+    'backup-system.env'
 )
-sha256sums=('3e4d96d5d763deef3f6d759a786b76e8339c06cd78d3f36272d027e0e945690e'
-            '1c3720bf983607005f73ffb182dbc912c406686f2ebb73ea32968446a272a92f'
-            '914494a4c5946057214aaea72d9716b2b2deeb1273b93bee3ba1986698527c10'
-            '4cf34128c7b245e9e4d852f87483d8a0ebf1e1ea1ec81dc70f9594d8ada1bc98'
-            '4c5aceffbedbfe99ae8221ddda5ad47a452d51a8070f4688639b6bf82e1d348e'
-            '80598d89c3decfaea199988807bc7062576b27bad5efcbea0c935905f8136505')
+sha256sums=('4cfae21b037c8b8f44d1338eac8d167ec811dad770b59d6c9cd454bdfd87966e'
+            'd6a1ccc371fa4952f4e9b5cdbfbddb771cbe5b5bf1336771841fec8898d175eb'
+            '1916a4337354fa053381e58da71f372a6e018b7d9972fc0adc8fc8e19968053b'
+            '87b07ff9224d0ce0abfeb3448b8af62470b0ecf251ac8ee0945ccd7d2ba1c40c'
+            'c230c77f9c8e64cbcc94cc6cd2a23193b00071d596e05cad740466f984e34b0d'
+            '7b36fdd255194af6fa244261250dc8d1d5b5ac0dad05e4e36c084b56a599037c'
+            '6fcfcda2c0f6b3ca0042118fd4b3baf4fd4585abc3aa6132983b9c217e5b601d'
+            '1319b36ee8736a9f610b8fb88f9a511e7002088c31b38624707f59faf003a9b7'
+            '9647c78990576121420e2ce2e8539b62b8f63e6853c4302e20c7ed62de855f8e'
+            'b0dde5c2e5ea28fce25bc4f2ca39d3d2a6213ee2ba7f09065b7fd47a87413248'
+            '240241825c4656193eb44e90d8af9d392a60eebc1272d7b01b40d6723a1fcd3f'
+            'f4602198e8dadb0383917a811e1cdb154ab1937f768b749b896b88a2907b402e'
+            'b68cd159c75b5e49427233602ea65c7d9206cb48008e355dfe3fb626fe14689e')
 
 package() {
-    for quadlet in minecraft{@.container,.image}; do
-        install -D -m644 ${quadlet} $pkgdir/usr/share/containers/systemd/${quadlet}
+    for quadlet in minecraft{.{container,image,pod,network},-backup.{container,image}}; do
+        install -D -m644 $quadlet $pkgdir/usr/share/containers/systemd/$quadlet
     done
-    install -D -m644 minecraft-setup@.service $pkgdir/usr/lib/systemd/system/minecraft-setup@.service
-    install -D -m755 minecraft-setup.bash $pkgdir/usr/lib/systemd/scripts/minecraft
-    install -D -m755 minecraft-configure.bash $pkgdir/usr/bin/mc-cfg
-    install -D -m755 minecraft-cleanup.bash $pkgdir/usr/bin/mc-rm
+    for unit in minecraft{.target,setup.service}; do
+        install -D -m644 $unit $pkgdir/usr/lib/systemd/system
+    done
+    for config in config backup; do
+        install -D -m644 $config.env $pkgdir/usr/share/factory/$config.env
+        install -D -m644 $config-system.env $pkgdir/usr/lib/minecraft/$config.env
+    done
+    install -D -m644 tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/minecraft.conf
+    install -D -m644 sysuser.conf $pkgdir/usr/lib/sysusers.d/minecraft.conf
 }

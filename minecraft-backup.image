@@ -1,0 +1,6 @@
+[Unit]
+Description=Minecraft backup image download
+
+[Image]
+Image=docker.io/itzg/docker-mc-backup
+Arch=amd64

@@ -1,0 +1,8 @@
+[Unit]
+Description=Minecraft Pod
+PartOf=minecraft.target
+
+[Pod]
+Network=minecraft.network
+Volume=/var/lib/minecraft/data:/data
+Volume=/var/lib/minecraft/global:/global

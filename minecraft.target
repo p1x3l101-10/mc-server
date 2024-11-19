@@ -1,0 +1,7 @@
+[Unit]
+Description=Minecraft Server
+Requires=minecraft.pod
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target

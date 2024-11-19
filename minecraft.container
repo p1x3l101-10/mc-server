@@ -1,0 +1,31 @@
+[Unit]
+Description=Minecraft Server
+
+[Container]
+# Environment
+Environment=UID=%U
+Environment=GID=%G
+EnvironmentFile=/usr/lib/minecraft/config.env
+EnvironmentFile=/etc/minecraft/config.env
+# Image
+Image=minecraft.image
+# Inter-container deps
+Pod=minecraft.pod
+StartWithPod=true
+Network=minecraft.network
+# Healthcheck
+HealthCmd=mc-health
+HealthOnFailure=kill
+HealthRetries=20
+HealthStartPeriod=1m
+HealthInterval=5s
+# Volumes
+Volume=/var/lib/minecraft/config:/config
+Volume=/var/lib/minecraft/mods:/mods
+Volume=/var/lib/minecraft/plugins:/plugins
+
+[Service]
+Restart=always
+# Needed for container UID and GID
+User=minecraft
+Group=minecraft
