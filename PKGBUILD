@@ -1,7 +1,7 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
@@ -55,4 +55,14 @@ package() {
     done
     install -D -m644 tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/minecraft.conf
     install -D -m644 sysuser.conf $pkgdir/usr/lib/sysusers.d/minecraft.conf
+}
+
+post_install(){
+    echo "minecraft::165536:65536" >> /etc/subuid
+    echo "minecraft::165536:65536" >> /etc/subgid
+}
+
+post_remove(){
+    sed -ni '/minecraft/!p' /etc/subuid
+    sed -ni '/minecraft/!p' /etc/subgid
 }
