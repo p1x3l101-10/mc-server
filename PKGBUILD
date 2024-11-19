@@ -1,7 +1,7 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
