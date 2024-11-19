@@ -1,7 +1,7 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
 pkgver=4.0.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
@@ -40,6 +40,7 @@ sha256sums=('4cfae21b037c8b8f44d1338eac8d167ec811dad770b59d6c9cd454bdfd87966e'
             '240241825c4656193eb44e90d8af9d392a60eebc1272d7b01b40d6723a1fcd3f'
             'f4602198e8dadb0383917a811e1cdb154ab1937f768b749b896b88a2907b402e'
             'b68cd159c75b5e49427233602ea65c7d9206cb48008e355dfe3fb626fe14689e')
+options=("!purge") # I use .pod files, and purge removes them. Also there is nothing to purge here anyways
 
 package() {
     for quadlet in "${_quadlets[@]}"; do

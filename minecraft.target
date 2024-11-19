@@ -1,6 +1,6 @@
 [Unit]
 Description=Minecraft Server
-Requires=minecraft.pod
+Requires=minecraft-pod.service
 After=network-online.target
 
 [Install]
