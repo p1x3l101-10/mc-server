@@ -1,18 +1,25 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
 depends=('podman')
-source=(
+_quadlets=(
     'minecraft.container'
     'minecraft.image'
     'minecraft-backup.container'
     'minecraft-backup.image'
     'minecraft.network'
     'minecraft.pod'
+)
+_units=(
+    'minecraft.target'
+)
+source=(
+    "${_quadlets[@]}"
+    "${_units[@]}"
     'minecraft.target'
     'tmpfiles.conf'
     'sysuser.conf'
@@ -36,10 +43,10 @@ sha256sums=('4cfae21b037c8b8f44d1338eac8d167ec811dad770b59d6c9cd454bdfd87966e'
             'b68cd159c75b5e49427233602ea65c7d9206cb48008e355dfe3fb626fe14689e')
 
 package() {
-    for quadlet in minecraft{.{container,image,pod,network},-backup.{container,image}}; do
+    for quadlet in "${_quadlets[@]}"; do
         install -D -m644 $quadlet $pkgdir/usr/share/containers/systemd/$quadlet
     done
-    for unit in minecraft.target; do # Should only run once, but I am a big fan of future-proofing
+    for unit in "${_units[@]}"; do
         install -D -m644 $unit $pkgdir/usr/lib/systemd/system/$unit
     done
     for config in config backup; do
