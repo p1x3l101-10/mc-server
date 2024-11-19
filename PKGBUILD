@@ -41,6 +41,7 @@ sha256sums=('4cfae21b037c8b8f44d1338eac8d167ec811dad770b59d6c9cd454bdfd87966e'
             'f4602198e8dadb0383917a811e1cdb154ab1937f768b749b896b88a2907b402e'
             'b68cd159c75b5e49427233602ea65c7d9206cb48008e355dfe3fb626fe14689e')
 options=("!purge") # I use .pod files, and purge removes them. Also there is nothing to purge here anyways
+install="$pkgname.install"
 
 package() {
     for quadlet in "${_quadlets[@]}"; do
@@ -55,14 +56,4 @@ package() {
     done
     install -D -m644 tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/minecraft.conf
     install -D -m644 sysuser.conf $pkgdir/usr/lib/sysusers.d/minecraft.conf
-}
-
-post_install(){
-    echo "minecraft::165536:65536" >> /etc/subuid
-    echo "minecraft::165536:65536" >> /etc/subgid
-}
-
-post_remove(){
-    sed -ni '/minecraft/!p' /etc/subuid
-    sed -ni '/minecraft/!p' /etc/subgid
 }
