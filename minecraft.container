@@ -3,8 +3,8 @@ Description=Minecraft Server
 
 [Container]
 # Environment
-#Environment=UID=%U
-#Environment=GID=%G
+Environment=UID=998
+Environment=GID=998
 EnvironmentFile=/usr/lib/minecraft/config.env
 EnvironmentFile=/etc/minecraft/config.env
 # Image
@@ -26,7 +26,3 @@ Volume=/var/lib/minecraft/plugins:/plugins
 
 [Service]
 Restart=always
-ExecStartPost=/usr/bin/chown -R :minecraft /var/lib/minecraft
-# Needed for container UID and GID
-#User=minecraft
-#Group=minecraft
