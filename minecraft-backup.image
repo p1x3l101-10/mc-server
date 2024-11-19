@@ -2,5 +2,5 @@
 Description=Minecraft backup image download
 
 [Image]
-Image=docker.io/itzg/docker-mc-backup
+Image=docker.io/itzg/mc-backup:latest
 Arch=amd64
