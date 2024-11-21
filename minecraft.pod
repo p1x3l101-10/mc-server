@@ -4,5 +4,6 @@ PartOf=minecraft.target
 
 [Pod]
 Network=minecraft.network
+PublishPort=25565:25565
 Volume=/var/lib/minecraft/data:/data
 Volume=/var/lib/minecraft/global:/global
