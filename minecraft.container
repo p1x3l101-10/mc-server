@@ -10,6 +10,7 @@ EnvironmentFile=/etc/minecraft/config.env
 # Image
 Image=minecraft.image
 # Inter-container deps
+PublishPort=25565:25565
 Pod=minecraft.pod
 StartWithPod=true
 Network=minecraft.network
