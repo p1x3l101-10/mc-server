@@ -14,7 +14,7 @@ PublishPort=25565:25565
 Pod=minecraft.pod
 StartWithPod=true
 Network=minecraft.network
-HostName=minecraft-server.podman
+IP=192.168.100.100
 # Healthcheck
 HealthCmd=mc-health
 HealthOnFailure=kill
