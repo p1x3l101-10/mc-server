@@ -1,6 +1,6 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
-pkgver=4.0.9
+pkgver=4.1.0
 pkgrel=1
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
@@ -28,11 +28,11 @@ source=(
     'backup.env'
     'backup-system.env'
 )
-sha256sums=('c268606ecf2976a8e643fe70747b1904bb010382c7aafa717ef1da74b5cbd168'
+sha256sums=('cf78534a38f0f124e59fdc8e7eaca9f4cd4ddd30026fab918a23d6000d27d485'
             'd6a1ccc371fa4952f4e9b5cdbfbddb771cbe5b5bf1336771841fec8898d175eb'
             '6d3297b86f6c5dd3fec4edcc42f3355976591f6e738336fcfc15cc5b551843cd'
             'ef8b68996a225f3c5d2c0dbd2aa3c81bb0a26420086a75574b6ac8d119b750c2'
-            'a46a6d99bc5978190160c4b4d3dec5ff10a24ae57cd3355ae25aa4f180735f0f'
+            '5b86197efe5308107434ef25f6e18c4f3919396533eaa61742ae57cd468d57e7'
             '05b61dce757ef26dfe403ec083373671361b0f16824bc17f54d3a5136dbcc8cc'
             '94774bf67372f72d3b28ccadbfbc7ca9f4d9c34be085fbed79fc713c91e91e91'
             '5e8b81bbee683724cb921177b4b4efac7fcdab4b8a3884de81d3ac82dc80a0b0'
@@ -41,7 +41,7 @@ sha256sums=('c268606ecf2976a8e643fe70747b1904bb010382c7aafa717ef1da74b5cbd168'
             'b0dde5c2e5ea28fce25bc4f2ca39d3d2a6213ee2ba7f09065b7fd47a87413248'
             '240241825c4656193eb44e90d8af9d392a60eebc1272d7b01b40d6723a1fcd3f'
             'f4602198e8dadb0383917a811e1cdb154ab1937f768b749b896b88a2907b402e'
-            'b68cd159c75b5e49427233602ea65c7d9206cb48008e355dfe3fb626fe14689e')
+            '92967cf8cb95b6b49051a489a51214fce109a357dde7704b2adea3555e0030c6')
 options=("!purge") # I use .pod files, and purge removes them. Also there is nothing to purge here anyways
 
 package() {
