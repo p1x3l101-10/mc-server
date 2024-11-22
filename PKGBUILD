@@ -1,6 +1,6 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
-pkgver=4.0.8
+pkgver=4.0.9
 pkgrel=1
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
@@ -13,6 +13,7 @@ _quadlets=(
     'minecraft-backup.image'
     'minecraft.network'
     'minecraft.pod'
+    'minecraft-data.volume'
 )
 _units=(
     'minecraft.target'
@@ -27,12 +28,13 @@ source=(
     'backup.env'
     'backup-system.env'
 )
-sha256sums=('62988ff28b0997f498fc182733d33db9ac2a8a3765ba7c7874dcf791684ca3c0'
+sha256sums=('c268606ecf2976a8e643fe70747b1904bb010382c7aafa717ef1da74b5cbd168'
             'd6a1ccc371fa4952f4e9b5cdbfbddb771cbe5b5bf1336771841fec8898d175eb'
-            '1916a4337354fa053381e58da71f372a6e018b7d9972fc0adc8fc8e19968053b'
+            '6d3297b86f6c5dd3fec4edcc42f3355976591f6e738336fcfc15cc5b551843cd'
             'ef8b68996a225f3c5d2c0dbd2aa3c81bb0a26420086a75574b6ac8d119b750c2'
             'a46a6d99bc5978190160c4b4d3dec5ff10a24ae57cd3355ae25aa4f180735f0f'
-            'dbcf51e1f763cf5c21542c9f686787546fdbcf5bc83148a78cb647dd7a4a7c29'
+            '05b61dce757ef26dfe403ec083373671361b0f16824bc17f54d3a5136dbcc8cc'
+            'eab1fa17a1282ff1740b6194f28036214bb782aa1e6eaed164849a3afb811e53'
             '5e8b81bbee683724cb921177b4b4efac7fcdab4b8a3884de81d3ac82dc80a0b0'
             '1319b36ee8736a9f610b8fb88f9a511e7002088c31b38624707f59faf003a9b7'
             '36685e7b21cd891e42f0d2c5da27792f09f12c064b8c5f5da35cfa9b78c54101'

@@ -1,0 +1,6 @@
+[Unit]
+Description=Minecraft Data
+
+[Volume]
+Type=bind
+Device=/var/lib/minecraft/data

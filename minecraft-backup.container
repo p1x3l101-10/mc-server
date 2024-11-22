@@ -4,7 +4,8 @@ PartOf=minecraft.service
 
 [Container]
 Image=minecraft-backup.image
-Volume=/var/lib/minecraft/backups:/backups
+Volume=minecraft-data.volume:/data:ro
+Volume=/var/lib/minecraft/backups:/backups:rw
 EnvironmentFile=/usr/lib/minecraft/backup.env
 EnvironmentFile=/etc/minecraft/backup.env
 Pod=minecraft.pod

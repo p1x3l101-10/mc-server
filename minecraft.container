@@ -21,9 +21,10 @@ HealthRetries=20
 HealthStartPeriod=1m
 HealthInterval=5s
 # Volumes
-Volume=/var/lib/minecraft/config:/config
-Volume=/var/lib/minecraft/mods:/mods
-Volume=/var/lib/minecraft/plugins:/plugins
+Volume=minecraft-data.volume:/data:rw
+Volume=/var/lib/minecraft/config:/config:ro
+Volume=/var/lib/minecraft/mods:/mods:ro
+Volume=/var/lib/minecraft/plugins:/plugins:ro
 
 [Service]
 Restart=always
