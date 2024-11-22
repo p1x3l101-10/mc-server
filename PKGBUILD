@@ -1,7 +1,7 @@
 pkgname=mc-server
 pkgdesc="Minecraft server service"
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64') # Literally just change the arch in minecraft.image for another arch
 url="https://github.com/p1x3l101-10/mc-server"
 licence=('none')
@@ -28,7 +28,7 @@ source=(
     'backup.env'
     'backup-system.env'
 )
-sha256sums=('c268606ecf2976a8e643fe70747b1904bb010382c7aafa717ef1da74b5cbd168'
+sha256sums=('cd3e648a2d50db5ef81e002b08268f43bcfbb0d2455818fcfdc4760ca5ace0c5'
             'd6a1ccc371fa4952f4e9b5cdbfbddb771cbe5b5bf1336771841fec8898d175eb'
             '6d3297b86f6c5dd3fec4edcc42f3355976591f6e738336fcfc15cc5b551843cd'
             'ef8b68996a225f3c5d2c0dbd2aa3c81bb0a26420086a75574b6ac8d119b750c2'
